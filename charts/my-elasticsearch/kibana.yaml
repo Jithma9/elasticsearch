@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-kibana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-kibana
+  template:
+    metadata:
+      labels:
+        app: my-kibana
+    spec:
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:7.x
+          ports:
+            - containerPort: 5601
